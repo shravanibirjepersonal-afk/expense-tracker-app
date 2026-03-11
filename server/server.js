@@ -7,7 +7,7 @@ import transactionsRouter from './routes/transactions.js'
 dotenv.config()
 
 const app = express()
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5001
 
 app.use(cors({ origin: process.env.CLIENT_URL || '*' }))
 app.use(express.json())
@@ -16,7 +16,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'Expense tracker API is running' })
 })
 
-app.use('/transactions', transactionsRouter)
+// API routes
+app.use('/api/transactions', transactionsRouter)
 
 const uri = process.env.MONGODB_URI
 if (!uri) {
